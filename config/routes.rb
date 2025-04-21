@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
+  scope module: :public do
+    root to: "homes#top"
+    get "/about", to: "homes#about"
+    get "customers/my_page", to:"customers#show"
+    get "customers/edit"
+    get "customers/unsubscribe"
+  end
 
   # 管理者用
   # URL /admin/sign_in ...
