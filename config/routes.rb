@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/thanks'
-    get 'orders/index'
-    get 'orders/show'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
@@ -19,6 +12,9 @@ Rails.application.routes.draw do
     get "customers/infomation/edit", to: "customers#edit"
     get "customers/unsubscribe"
     resources :addresses, only: [:index, :edit]
+    resources :orders, only: [:new, :index, :show]
+    get 'orders/confirm'
+    get 'orders/thanks'
   end
 
   # 管理者用
