@@ -8,9 +8,13 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about", to: "homes#about"
-    get "customers/my_page", to:"customers#show"
-    get "customers/edit"
+    get "customers/my_page", to: "customers#show"
+    get "customers/infomation/edit", to: "customers#edit"
     get "customers/unsubscribe"
+    resources :addresses, only: [:index, :edit]
+    resources :orders, only: [:new, :index, :show]
+    get 'orders/confirm'
+    get 'orders/thanks'
   end
 
   # 管理者用
