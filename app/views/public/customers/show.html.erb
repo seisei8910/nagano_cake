@@ -1,7 +1,7 @@
 <h1>マイページ</h1>
 <h2>登録情報</h2>
 <% if @customer == current_customer %>
-  <%= link_to "編集する", customers_infomation_edit(@customer) %>
+  <%= link_to "編集する", customers_infomation_edit_path(@customer) %>
 <% end %>
 <table>
   <thead>
@@ -27,6 +27,7 @@
 </table>
 
 <h2>配送先</h2>
-
+<%= link_to "一覧を見る", addresses_path %>
 
 <h2>注文履歴</h2>
+<%= link_to "一覧を見る", orders_path %>
