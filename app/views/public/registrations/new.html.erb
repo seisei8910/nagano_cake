@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h2>新規会員登録</h2>
+    <h2 class="bg-light px-4 m-5">新規会員登録</h2>
   </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -8,71 +8,71 @@
 
     <div class="row">
       <div class="col-2">
-        <p>名前</p>
-        <p>フリガナ</p>
-        <%= f.label :email, "メールアドレス" %>
+        <p class="my-3">名前</p>
+        <p class="mt-4 mb-3">フリガナ</p>
+        <%= f.label :email, "メールアドレス", class:"my-1" %>
       </div>
       <div class="col-1">
-        <%= f.label :last_name, "(姓)" %>
-        <%= f.label :last_name_kana, "(セイ)" %>
+        <%= f.label :last_name, "(姓)", class:"my-3" %>
+        <%= f.label :last_name_kana, "(セイ)", class:"mt-2" %>
       </div>
-      <div class="col-4">
-        <%= f.text_field :last_name %>
-        <%= f.text_field :last_name_kana %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="col-3">
+        <%= f.text_field :last_name, class: "form-control my-2" %>
+        <%= f.text_field :last_name_kana, class: "form-control mb-2" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control mb-2" %>
       </div>
       <div class="col-1">
-        <%= f.label :first_name, "(名)" %>
-        <%= f.label :first_name_kana, "(メイ)" %>
+        <%= f.label :first_name, "(名)", class:"my-3" %>
+        <%= f.label :first_name_kana, "(メイ)", class:"mt-2" %>
       </div>
-      <div class="col-4">
-        <%= f.text_field :first_name %>
-        <%= f.text_field :first_name_kana %>
+      <div class="col-3">
+        <%= f.text_field :first_name, class: "form-control my-2" %>
+        <%= f.text_field :first_name_kana, class: "form-control" %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-3">
-        <%= f.label :postal_code, "郵便番号(ハイフンなし)" %>
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "my-1" %>
       </div>
-      <div class="col-4">
-        <%= f.text_field :postal_code %>
+      <div class="col-3">
+        <%= f.text_field :postal_code, class: "form-control mb-2" %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-2">
-        <%= f.label :address, "住所" %>
+        <%= f.label :address, "住所", class: "my-1" %>
       </div>
-      <div class="col-9 offset-1">
-        <%= f.text_field :address %>
+      <div class="col-7 offset-1">
+        <%= f.text_field :address, class: "form-control mb-2" %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-3">
-        <%= f.label :telephone_number, "電話番号(ハイフンなし)" %><br>
-        <%= f.label :password, "パスワード" %>
+        <%= f.label :telephone_number, "電話番号(ハイフンなし)", class: "my-2" %><br>
+        <%= f.label :password, "パスワード", class: "my-3" %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上)</em>
         <% end %>
-        <%= f.label :password_confirmation, "パスワード(確認用)" %>
+        <%= f.label :password_confirmation, "パスワード(確認用)", class: "my-1" %>
       </div>
-      <div class="col-4">
-        <%= f.text_field :telephone_number %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="col-3">
+        <%= f.text_field :telephone_number, class: "form-control mb-2" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control mb-2" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         <div class="actions">
-          <%= f.submit "新規登録" %>
+          <%= f.submit "新規登録", class: "btn btn-success px-5 my-4" %>
         </div>
       </div>
     </div>
   <% end %>
 
   <div class="row">
-    <h2>既に登録済みの方</h2>
+    <h2 class="bg-light px-4 m-4">既に登録済みの方</h2>
   </div>
   <div class="row">
-    <p><%= render "public/shared/links" %>からログインしてください。</p>
+    <p class="mx-5"><%= render "public/shared/links" %>からログインしてください。</p>
   </div>
 </div>
