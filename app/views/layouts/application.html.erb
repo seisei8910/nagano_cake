@@ -18,22 +18,33 @@
             <h1 class="border border-dark my-5 text-center">LOGO</h1>
           </div>
           <% if customer_signed_in? %>
-            <div class="row">
-              <li>
-                <%= link_to "マイページ", customers_my_page_path %>
-              </li>
-              <li>
-                <%= link_to "商品一覧", customers_my_page_path %>
-              </li>
-              <li>
-                <%= link_to "カート", customers_my_page_path %>
-              </li>
-              <li>
-                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-              </li>
+            <div class="col-3">
+              <p class="my-5 pl-5 pt-3">ようこそ、<%= @customer.last_name %>さん！</p>
             </div>
-            <div class="row">
-              <p>Search</p>
+            <div class="col-6">
+              <div class="row mt-4">
+                <div class="col-12">
+                  <ul class="list-group list-group-horizontal list-unstyled justify-content-end">
+                    <li class="list-group-item border-0">
+                      <%= link_to "マイページ", customers_my_page_path, class: "btn btn-outline-secondary px-1" %>
+                    </li>
+                    <li class="list-group-item border-0">
+                      <%= link_to "商品一覧", customers_my_page_path, class: "btn btn-outline-secondary" %>
+                    </li>
+                    <li class="list-group-item border-0">
+                      <%= link_to "カート", customers_my_page_path, class: "btn btn-outline-secondary px-4" %>
+                    </li>
+                    <li class="list-group-item border-0 pr-0">
+                      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-secondary px-1" %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6 offset-6">
+                  <p class="border text-secondary py-1">Search</p>
+                </div>
+              </div>
             </div>
           <% else %>
             <div class="row">
