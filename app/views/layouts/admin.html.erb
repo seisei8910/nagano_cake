@@ -9,11 +9,41 @@
 </head>
 <body>
   <header>
-    <% if admin_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-      </li>
-    <% end %>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-3">
+          <h1 class="border border-dark my-5 text-center">LOGO</h1>
+        </div>
+        <% if admin_signed_in? %>
+          <div class="col-9">
+            <div class="row mt-4">
+              <div class="col-12">
+                <ul class="list-group list-group-horizontal list-unstyled justify-content-end">
+                  <li class="list-group-item border-0">
+                    <%= link_to "商品一覧", admin_root_path, class: "btn btn-outline-secondary" %>
+                  </li>
+                  <li class="list-group-item border-0">
+                    <%= link_to "会員一覧", admin_root_path, class: "btn btn-outline-secondary" %>
+                  </li>
+                  <li class="list-group-item border-0">
+                    <%= link_to "注文履歴一覧", admin_root_path, class: "btn btn-outline-secondary px-0" %>
+                  </li>
+                  <li class="list-group-item border-0">
+                    <%= link_to "ジャンル一覧", admin_root_path, class: "btn btn-outline-secondary px-0" %>
+                  </li>
+                  <li class="list-group-item border-0 pr-0">
+                    <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-secondary" %>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-4 offset-8">
+                <p class="border text-secondary py-1">Search</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </header>
   <%= yield %>
 </body>
