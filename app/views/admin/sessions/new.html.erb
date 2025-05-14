@@ -4,7 +4,7 @@
     <h2 class="bg-light px-4 mt-5">管理者ログイン</h2>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @admin, url: admin_session_path, local: true do |f| %>
     <div class="row">
       <div class="col-2 offset-2">
         <%= f.label :email, "メールアドレス", class: "my-5" %>
