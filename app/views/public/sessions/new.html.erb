@@ -7,7 +7,7 @@
     <h4 class="bg-light px-4 ml-4">会員の方はこちらからログイン</h4>
   </div>
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
     <div class="row">
       <div class="col-2 offset-2">
         <%= f.label :email, "メールアドレス", class: "my-5" %>
