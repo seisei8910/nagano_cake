@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     get "customers/my_page", to: "customers#show"
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
-    get "customers/unsubscribe"
+    get "customers/unsubscribe", to: "customers#unsubscribe"
+    patch "customers/withdraw", to: "customers#withdraw"
     resources :addresses, only: [:index, :edit]
     resources :orders, only: [:new, :index, :show]
     get 'orders/confirm'
