@@ -15,7 +15,11 @@ class Public::CustomersController < ApplicationController
     redirect_to customers_my_page_path
   end
 
-  def unsubscribe
+  def withdraw
+    @customer = Customer.find(current_customer)
+    @customer.update(is_active: false)
+    reset_session
+    redirect_to root_path
   end
 
   private
