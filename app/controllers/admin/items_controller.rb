@@ -3,7 +3,7 @@ class Admin::ItemsController < ApplicationController
   layout 'admin'
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
   end
 
   def new
