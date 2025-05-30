@@ -1,3 +1,19 @@
 <h1>商品編集</h1>
-<% form_with model: [:admin, @item] do |f| %>
+<%= form_with model: [:admin, @item] do |f| %>
+  <p>商品画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+  <%= f.label :name, "商品名" %>
+  <%= f.text_field :name, autofocus: true %>
+  <%= f.label :introduction, "商品説明" %>
+  <%= f.text_area :introduction, size: "30x6", autofocus: true %>
+  <%= f.label :genre_id %>
+  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+  <%= f.label :price, "税抜価格" %>
+  <%= f.text_field :price, autofocus: true %><span>円</span>
+  <%= f.label :is_active, "販売ステータス" %>
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active_true, "販売中" %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active_false, "販売停止中" %>
+  <%= f.submit "変更を保存" %>
 <% end %>

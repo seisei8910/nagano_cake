@@ -9,7 +9,7 @@
   <%= f.label :genre_id, "ジャンル" %>
   <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
   <%= f.label :price, "税抜価格" %>
-  <%= f.text_field :price %>
+  <%= f.text_field :price %><span>円</span>
   <%= f.label :is_active, "販売ステータス" %>
   <%= f.radio_button :is_active, true %>
   <%= f.label :is_active_true, "販売中" %>
