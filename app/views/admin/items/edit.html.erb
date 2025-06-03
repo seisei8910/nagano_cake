@@ -1,19 +1,56 @@
-<h1>商品編集</h1>
-<%= form_with model: [:admin, @item] do |f| %>
-  <p>商品画像</p>
-  <%= f.file_field :image, accept: "image/*" %>
-  <%= f.label :name, "商品名" %>
-  <%= f.text_field :name, autofocus: true %>
-  <%= f.label :introduction, "商品説明" %>
-  <%= f.text_area :introduction, size: "30x6", autofocus: true %>
-  <%= f.label :genre_id %>
-  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
-  <%= f.label :price, "税抜価格" %>
-  <%= f.text_field :price, autofocus: true %><span>円</span>
-  <%= f.label :is_active, "販売ステータス" %>
-  <%= f.radio_button :is_active, true %>
-  <%= f.label :is_active_true, "販売中" %>
-  <%= f.radio_button :is_active, false %>
-  <%= f.label :is_active_false, "販売停止中" %>
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="offset-1">
+      <h3 class="bg-light my-4 px-4">商品編集</h3>
+    </div>
+  </div>
+  <%= form_with model: [:admin, @item] do |f| %>
+    <div class="row">
+      <div class="col-1 offset-3">
+        <p class="mt-1">商品画像</p>
+        <%= f.label :name, "商品名" %>
+        <%= f.label :introduction, "商品説明", class: "mt-3" %>
+      </div>
+      <div class="col-4 offset-1">
+        <%= f.file_field :image, accept: "image/*", class: "mb-2" %>
+        <%= f.text_field :name, autofocus: true, placeholder: "商品名", class: "form-control mb-2" %>
+        <%= f.text_area :introduction, size: "30x6", autofocus: true, placeholder: "ここに説明文を記述します", class: "form-control mb-2" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-3">
+        <%= f.label :genre_id, "ジャンル", class: "mt-2" %>
+      </div>
+      <div class="col-4">
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), {prompt: "--選択してください--"}, {class: "form-control mb-2"} %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-3">
+        <%= f.label :price, "税抜価格", class: "mt-2" %>
+      </div>
+      <div class="col-3">
+        <%= f.text_field :price, autofocus: true, placeholder: "1000", class: "form-control mb-2" %>
+      </div>
+      <div class="col-1 mt-2 pl-0">
+        <span>円</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-3">
+        <%= f.label :is_active, "販売ステータス", class: "mt-2" %>
+      </div>
+      <div class="col-4 mt-2">
+        <%= f.radio_button :is_active, true %>
+        <%= f.label :is_active_true, "販売中" %>
+        <%= f.radio_button :is_active, false, class: "ml-4" %>
+        <%= f.label :is_active_false, "販売停止中" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 offset-5">
+        <%= f.submit "変更を保存", class: "btn btn-success my-4 px-5" %>
+      </div>
+    </div>
+  <% end %>
+</div>

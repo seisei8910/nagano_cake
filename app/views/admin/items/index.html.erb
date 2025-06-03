@@ -1,27 +1,47 @@
-<h1>商品一覧</h1>
-<%= link_to new_admin_item_path, class: "shadow btn btn-light rounded-circle" do %>
-  <i class="fa-solid fa-plus fa-2x text-dark"></i>
-<% end %>
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @items.each do |item| %>
-    <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to item.name, admin_item_path(item.id) %></td>
-      <td><%= item.with_tax_free_price %></td>
-      <td><%= item.genre.name %></td>
-      <td><%= item.is_active ? "販売中" : "販売停止中" %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= paginate @items %>
+<div class="container">
+  <div class="row">
+    <div class="offset-1">
+      <h3 class="bg-light my-5 px-4">商品一覧</h3>
+    </div>
+    <div class="col-2 offset-7 mt-4 pl-5">
+      <%= link_to new_admin_item_path, class: "shadow btn btn-light rounded-circle ml-4 mt-3" do %>
+        <i class="fa-solid fa-plus fa-2x text-dark"></i>
+      <% end %>
+    </div>
+  </div>
+  <table class="table table-borderless">
+    <thead class="thead-light">
+      <tr class="row"><th class="col-10 offset-1 border-bottom py-0"></th></tr>
+      <tr class="row">
+        <th class="col-1 offset-1">商品ID</th>
+        <th class="col-3">商品名</th>
+        <th class="col-1">税抜価格</th>
+        <th class="col-3">ジャンル</th>
+        <th class="col-2">ステータス</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @items.each do |item| %>
+      <tr class="row">
+        <td class="col-1 offset-1"><%= item.id %></td>
+        <td class="col-3"><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td class="col-1"><%= item.with_tax_free_price %></td>
+        <td class="col-3"><%= item.genre.name %></td>
+        <td class="col-2">
+          <% if item.is_active %>
+            <span class="text-success">販売中</span>
+          <% else %>
+            <span class="text-secondary">販売停止中</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+      <tr class="row"><td class="col-10 offset-1 border-top py-0"></td></tr>
+    </tbody>
+  </table>
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
