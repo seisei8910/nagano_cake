@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
@@ -12,6 +8,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about", to: "homes#about"
+    resources :items, only: [:index, :show]
     get "customers/my_page", to: "customers#show"
     get "customers/information/edit", to: "customers#edit"
     patch "customers/information", to: "customers#update"
