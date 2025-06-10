@@ -38,7 +38,9 @@
                 </ul>
               </div>
               <div class="col-4 offset-8">
-                <p class="border text-secondary py-1">Search</p>
+                <%= form_with url: admin_items_path, method: :get do |f| %>
+                  <%= f.text_field :name %>
+                <% end %>
               </div>
             </div>
           </div>
