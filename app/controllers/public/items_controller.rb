@@ -1,7 +1,12 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]).per(8)
-    @genres = Genre.all
+    if params[:name].present?
+      @items = Item.where("name LIKE ?", "%#{params[:name]}%").page(params[:page])
+      @genres = Genre.all
+    else
+      @items = Item.page(params[:page]).per(8)
+      @genres = Genre.all
+    end
   end
 
   def show

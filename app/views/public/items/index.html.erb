@@ -12,7 +12,11 @@
   <% end %>
   </tbody>
 </table>
-<h1>商品一覧</h1>
+<% if params[:name].present? %>
+  <h1>「<%= params[:name] %>」の検索結果一覧</h1>
+<% else %>
+  <h1>商品一覧</h1>
+<% end %>
 <p>全<%= @items.total_count %>件</p>
 <% @items.each do |item| %>
   <div>
