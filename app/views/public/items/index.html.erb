@@ -14,6 +14,8 @@
 </table>
 <% if params[:name].present? %>
   <h1>「<%= params[:name] %>」の検索結果一覧</h1>
+<% elsif params[:genre_name].present? %>
+  <h1><%= params[:genre_name] %>一覧</h1>
 <% else %>
   <h1>商品一覧</h1>
 <% end %>
